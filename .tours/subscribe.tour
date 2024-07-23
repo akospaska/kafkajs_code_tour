@@ -1,0 +1,31 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Kafka Subscribe",
+  "steps": [
+    {
+      "file": "example.js",
+      "description": "Felsubscribeolunk a megadott topicokra.",
+      "line": 20
+    },
+    {
+      "file": "src/consumer/index.js",
+      "description": "Itt történik meg a megadott topikokra való felsubscribe-olás, nézzük mit is jelent ez valójában.",
+      "line": 185
+    },
+    {
+      "file": "src/cluster/index.js",
+      "description": "Lényegében letároljuk a topikokat és lekérjük a topikokhoz tartozó metadatákat.",
+      "line": 230
+    },
+    {
+      "file": "src/cluster/brokerPool.js",
+      "description": "Itt frissítjük a topikok metadata-ját.",
+      "line": 158
+    },
+    {
+      "file": "src/broker/index.js",
+      "description": "Itt lekérdezzük a topikokhoz tartozó metadatát.\nItt történik meg a request ami kimegy a kafkához.\n\nhttps://kafka.apache.org/protocol.html#The_Messages_Metadata",
+      "line": 177
+    }
+  ]
+}

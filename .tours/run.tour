@@ -1,0 +1,56 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Kafka Run",
+  "steps": [
+    {
+      "file": "example.js",
+      "description": "Itt indul lényegében a buli. \n\nA consumer.run meghívásakor adjuk át, hogy az eachBatch-ünk lényegében milyen függvényt hívjon meg és elindul az a folyamat, ami a folyamatos kapcsolat karbantartásáért felel.",
+      "line": 25
+    },
+    {
+      "file": "src/consumer/index.js",
+      "description": "Ez a fő run függvény.",
+      "line": 189
+    },
+    {
+      "file": "src/consumer/index.js",
+      "description": "Itt inicializáljuk a consumerGroup-unkat, Itt még a kafkával történő kommunikáció nem történik",
+      "line": 206
+    },
+    {
+      "file": "src/consumer/index.js",
+      "description": "Inicializáljuk a runnerünket, és a runner.start meghívásakor indul a buli, de mit is jelent ez a gyakorlatban?",
+      "line": 229
+    },
+    {
+      "file": "src/consumer/runner.js",
+      "description": "2 fő lépés történik ilyenkor, Az első a consumerGroup.connect.",
+      "line": 83
+    },
+    {
+      "file": "src/cluster/brokerPool.js",
+      "description": "Ebben az állásban nem fog térténni semmi, mert már vannak beállított brókereink.",
+      "line": 83
+    },
+    {
+      "file": "src/consumer/runner.js",
+      "description": "A másik pedig a consumerGroup.joinAndSync().",
+      "line": 84
+    },
+    {
+      "file": "src/consumer/consumerGroup.js",
+      "description": "A kafkának jelezzük, hogy a megadott groupId-val csatlakoznánk a brokerhez. \n\nŐ visszaad metadatákat, és a memberId-nkat, ami minden consumernek egyedi, nem úgy mint a groupId ami ugy elehet hasonló.",
+      "line": 169
+    },
+    {
+      "file": "src/broker/index.js",
+      "description": "Itt történik meg a kafka request a 11. apiKey-jel.\n\nhttps://kafka.apache.org/protocol.html#The_Messages_JoinGroup",
+      "line": 383
+    },
+    {
+      "file": "src/consumer/runner.js",
+      "description": "Utolsó lépésként pedig elindítja a fetchManager.start-tal a periodikus fetch-elést a különböző topikokra.",
+      "line": 113
+    }
+  ]
+}

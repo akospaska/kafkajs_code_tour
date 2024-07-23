@@ -1,0 +1,91 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Kafka Connection",
+  "steps": [
+    {
+      "file": "example.js",
+      "description": "1. Létrehozunk egy kafka klienst egy clientId-val, és egy brókerrel.\nItt a legalább 1 bróker a mandatory\n\nhttps://kafka.js.org/docs/configuration",
+      "line": 4
+    },
+    {
+      "file": "src/index.js",
+      "description": "2. Ez a class lesz példányosítva, amikor a kliensünket létrehozzuk.\n\nItt később tudjuk létehozni majd ebből a producer, consumer és admin kliensünket is.",
+      "line": 36
+    },
+    {
+      "file": "src/index.js",
+      "description": "Consumer és admin-nál is ugyanolyan cluster lesz létrehozva ebben az esetben.",
+      "line": 160
+    },
+    {
+      "file": "example.js",
+      "description": "Példányosítjuk a consumerünket egy groupId-val",
+      "line": 10
+    },
+    {
+      "file": "example.js",
+      "description": "Majd az Adminunkat is példányosítjuk\n",
+      "line": 11
+    },
+    {
+      "file": "example.js",
+      "description": "Meghívjuk a consumer.connect függvényt",
+      "line": 17
+    },
+    {
+      "file": "src/consumer/index.js",
+      "description": "Ez meghívja a cluster.connect függvényt\n\nmajd küld egy instrument_event-et , hogy connectáltunk.",
+      "line": 91
+    },
+    {
+      "file": "src/cluster/index.js",
+      "description": "Ez a clusteren belül meghívja a this[PRIVATE.CONNECT]() függvényt",
+      "line": 146
+    },
+    {
+      "file": "src/cluster/index.js",
+      "description": "Ami meghívja a brokerpool-unkban található connectet.",
+      "line": 107
+    },
+    {
+      "file": "src/cluster/brokerPool.js",
+      "description": "Abban az esetben, ha seedbroker még nem lett inicializálva, úgy ezt megcsináljuk\n\n",
+      "line": 88
+    },
+    {
+      "file": "src/cluster/connectionPoolBuilder.js",
+      "description": "A tömbként beadott brokerurl stringek közül kiválaszt egy randomot és azt nevezi ki seedbrokernek",
+      "line": 96
+    },
+    {
+      "file": "src/cluster/connectionPoolBuilder.js",
+      "description": "És példányosítja majd visszaad egy connectionPool-t.",
+      "line": 99
+    },
+    {
+      "file": "src/cluster/brokerPool.js",
+      "description": "Ez egy void függvény, de a this.seedBroker-t itt állítjuk be.",
+      "line": 72
+    },
+    {
+      "file": "src/broker/index.js",
+      "description": "A korábban inicializált connectionPool-ból ad nekünk egy connection-t",
+      "line": 86
+    },
+    {
+      "file": "src/broker/index.js",
+      "description": "Ha a legeslegelső connect-nál járunk, akkor lefetcheljük az összes, a kafka brokerünk által támogatott api verziókat.\n\nhttps://kafka.apache.org/protocol.html#protocol_api_keys",
+      "line": 89
+    },
+    {
+      "file": "src/network/connection.js",
+      "description": "Utána következő lépésben meghívjuk a PRIVATE.AUTHENTICATE függvényt.",
+      "line": 315
+    },
+    {
+      "file": "src/network/connection.js",
+      "description": "Amennyiben sasl authentikációt állítottunk be, úgy a sasl authentikáció itt történik meg.",
+      "line": 131
+    }
+  ]
+}

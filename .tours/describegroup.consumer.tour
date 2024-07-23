@@ -1,0 +1,27 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Consumer describeGroup",
+  "steps": [
+    {
+      "file": "example.js",
+      "description": "Felsubscribeolunk a megadott topicokra.",
+      "line": 20
+    },
+    {
+      "file": "example.js",
+      "description": "A consumer.describeGroup-ot csak akkor tudjuk meghívni, ha már a consumerünk connectált és a .run függvény is meghívódott.\n\nhttps://kafka.js.org/docs/consuming#a-name-describe-group-a-describe-group\n\nVisszaadja a consumerünk groupId-ja alapján a brokertől a consumerGroup-punk metadata-ját.",
+      "line": 36
+    },
+    {
+      "file": "src/consumer/index.js",
+      "description": "Itt lényegében egy describeGroups nevű függvényt founk meghívni a saját consumerünk groupId-jával.",
+      "line": 423
+    },
+    {
+      "file": "src/broker/index.js",
+      "description": "Pontosan ugyanezt a függvényt fogja az admin is megíhvni, de errről majd később.\n\n15. apiKey-jel kerül kiküldésre a request és itt kapjuk vissza az adott group metadatáját.\nhttps://kafka.apache.org/protocol.html#The_Messages_DescribeGroups\n\nNincs arról leírás, hogy ezt csak bizonyos permission set-tel hívhatjuk meg, sem a kafka, sem a kafkajs-ben.",
+      "line": 532
+    }
+  ],
+  "isPrimary": true
+}

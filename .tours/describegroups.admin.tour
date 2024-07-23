@@ -1,0 +1,27 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Admin describeGroups",
+  "steps": [
+    {
+      "file": "example.js",
+      "description": "Meghívjuk az admin.describeGroups- fügvényt egy általunk megadott groupId-kkal.\n\nhttps://kafka.js.org/docs/admin#a-name-describe-groups-a-describe-groups",
+      "line": 50
+    },
+    {
+      "file": "src/admin/index.js",
+      "description": "Ez a függvény kerül meghívásra",
+      "line": 875
+    },
+    {
+      "file": "src/broker/index.js",
+      "description": "A megadott groupId-kkal meghívjuk a 15. apiKey-jel a describeGroup API-t.\n\nhttps://kafka.apache.org/protocol.html#The_Messages_DescribeGroups",
+      "line": 532
+    },
+    {
+      "file": "src/network/connection.js",
+      "description": "Az utolsó kafkajs függvény a tényleges request küldés előtt itt történik, de egyszerűen nem látom át, hogy a kredensölöket, vagy akármit hol adjuk át.\n\nArra gondolok, hogy mivel binary protocol over TCP és nem sima http van, ezért valahogy másképp mehet a kredensölök átadása.",
+      "line": 418
+    }
+  ],
+  "isPrimary": true
+}
